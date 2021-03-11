@@ -6,6 +6,12 @@ import router from './router'
 import ElementPlus from 'element-plus'
 import 'element-plus/lib/theme-chalk/index.css'
 
+// reset css
+import '@/assets/css/reset.css'
+
+// global css
+import '@/assets/stylus/global.styl'
+
 createApp(App)
   .use(router)
   .use(ElementPlus)

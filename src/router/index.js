@@ -2,6 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const Home = () => import('@/views/Home')
 
+const Echart = () => import('@/views/Echart')
+const Hot = () => import('@/views/Echart/Hot')
+
 const routes = [
   {
     path: '/',
@@ -11,6 +14,22 @@ const routes = [
     path: '/home',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/echart',
+    name: 'Echart',
+    component: Echart,
+    children: [
+      {
+        path: '',
+        redirect: '/echart/hot'
+      },
+      {
+        path: '/echart/hot',
+        name: 'Hot',
+        component: Hot
+      }
+    ]
   }
 ]
 

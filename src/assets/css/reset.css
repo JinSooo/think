@@ -138,3 +138,8 @@ html {
   clear: both;
   visibility: hidden;
 }
+
+/* 右边阴影 */
+.box-shadow_right {
+  box-shadow: 2px 0 8px 0 rgb(29 35 41 / 5%);
+}

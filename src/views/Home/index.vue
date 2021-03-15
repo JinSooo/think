@@ -1,60 +1,60 @@
 <template>
   <div class="main">
     <header>测试工程</header>
+    <!-- 图标列表 -->
     <ul class="project_list">
       <li class="project_item">
-        <a href="javascript:;">
+        <router-link to="/echart">
           <img src="../../assets/img/icon/宇航员.svg" alt="" width="80" height="80" />
-          <p>内容</p>
-        </a>
+          <p>echart</p>
+        </router-link>
       </li>
       <li class="project_item">
-        <a href="javascript:;">
-          <img src="../../assets/img/icon/外星人.svg" alt="" width="80" height="80" />
-          <p>内容</p>
-        </a>
+        <img src="../../assets/img/icon/外星人.svg" alt="" width="80" height="80" />
+        <p>内容</p>
       </li>
       <li class="project_item">
-        <a href="javascript:;">
-          <img src="../../assets/img/icon/卫星接收器.svg" alt="" width="80" height="80" />
-          <p>内容</p>
-        </a>
+        <img src="../../assets/img/icon/卫星接收器.svg" alt="" width="80" height="80" />
+        <p>内容</p>
       </li>
       <li class="project_item">
-        <a href="javascript:;">
-          <img src="../../assets/img/icon/土星.svg" alt="" width="80" height="80" />
-          <p>内容</p>
-        </a>
+        <img src="../../assets/img/icon/土星.svg" alt="" width="80" height="80" />
+        <p>内容</p>
       </li>
       <li class="project_item">
-        <a href="javascript:;">
-          <img src="../../assets/img/icon/流星1.svg" alt="" width="80" height="80" />
-          <p>内容</p>
-        </a>
+        <img src="../../assets/img/icon/流星1.svg" alt="" width="80" height="80" />
+        <p>内容</p>
       </li>
       <li class="project_item">
-        <a href="javascript:;">
-          <img src="../../assets/img/icon/流星2.svg" alt="" width="80" height="80" />
-          <p>内容</p>
-        </a>
+        <img src="../../assets/img/icon/流星2.svg" alt="" width="80" height="80" />
+        <p>内容</p>
       </li>
       <li class="project_item">
-        <a href="javascript:;">
-          <img src="../../assets/img/icon/火箭.svg" alt="" width="80" height="80" />
-          <p>内容</p>
-        </a>
+        <img src="../../assets/img/icon/火箭.svg" alt="" width="80" height="80" />
+        <p>内容</p>
       </li>
       <li class="project_item">
-        <a href="javascript:;">
-          <img src="../../assets/img/icon/地球.svg" alt="" width="80" height="80" />
-          <p>内容</p>
-        </a>
+        <img src="../../assets/img/icon/地球.svg" alt="" width="80" height="80" />
+        <p>内容</p>
       </li>
     </ul>
   </div>
+  <!-- 工程时间线 -->
+  <Timeline />
+  <!-- 背景canvas -->
+  <iframe id="bgCanv" src="bg.html" frameborder="0"></iframe>
 </template>
 
-<script setup></script>
+<script>
+import { defineComponent } from 'vue'
+import Timeline from '@/components/Timeline'
+export default defineComponent({
+  name: 'Home',
+  components: {
+    Timeline
+  }
+})
+</script>
 
 <style lang="stylus" scoped>
 .main
@@ -85,4 +85,9 @@
         color #eee
         font-size 16px
         padding-top 10px
+#bgCanv
+  position absolute
+  left 0
+  top 0
+  z-index -1
 </style>

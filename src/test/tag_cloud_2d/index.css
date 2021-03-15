@@ -1,0 +1,47 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  color: #333;
+}
+
+.cloud {
+  margin: 50px 250px;
+  list-style: none;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  line-height: 2.5rem;
+}
+
+.cloud li a {
+  position: relative;
+  font-size: 1.5rem;
+  padding: 0.125rem 0.25rem;
+  color: #409eff;
+}
+
+.cloud li:nth-child(2n + 1) a {
+  color: #67c23a;
+}
+.cloud li:nth-child(3n + 1) a {
+  color: #e6a23c;
+}
+.cloud li:nth-child(4n + 1) a {
+  color: #f56c6c;
+}
+
+.cloud li a:hover {
+  font-weight: 700;
+}
+
+/* .cloud a::after {
+  content: '(' attr(data-weight) ')';
+  font-size: 1rem;
+} */

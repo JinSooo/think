@@ -10,7 +10,10 @@
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "echarts": "^5.0.2",
     "element-plus": "^1.0.2-beta.33",
+    "nprogress": "^0.2.0",
+    "serve": "^11.3.2",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0"
   },
@@ -29,6 +32,6 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^7.0.0-0",
     "stylus": "^0.54.8",
-    "stylus-loader": "^5.0.0"
+    "stylus-loader": "^3.0.2"
   }
 }

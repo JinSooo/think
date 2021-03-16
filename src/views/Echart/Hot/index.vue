@@ -119,9 +119,9 @@
         </template>
         <!-- 热搜列表 -->
         <el-table :data="hotListByPagination" style="width: 100%">
-          <el-table-column type="index" label="排名" width="50"> </el-table-column>
-          <el-table-column prop="word" label="热搜名" width="250"> </el-table-column>
-          <el-table-column prop="hot_value" label="热搜量" width="120"> </el-table-column>
+          <el-table-column type="index" label="排名" min-width="50"> </el-table-column>
+          <el-table-column prop="word" label="热搜名" min-width="250"> </el-table-column>
+          <el-table-column prop="hot_value" label="热搜量" min-width="120"> </el-table-column>
           <el-table-column label="同比">
             <template #default="{ row }">
               <span>{{ (row.hot_value / total).toFixed(3) }}</span>
@@ -143,7 +143,8 @@
     </el-col>
     <el-col :span="12">
       <!-- 显示热榜 -->
-      <el-card>
+      <!-- 使两个card高度统一 -->
+      <el-card style="height: 100%">
         <template #header>
           <div class="card-header">
             <div class="header_content">关键字</div>
@@ -360,7 +361,7 @@ export default defineComponent({
             type: 'value',
             name: '热搜量',
             min: 5000000,
-            max: 8000000,
+            max: 10000000,
             // 显示y轴线条
             axisLine: { show: true },
             // 显示y轴刻度

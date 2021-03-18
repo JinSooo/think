@@ -6,15 +6,15 @@
         Echart
       </header>
       <el-menu default-active="1" :collapse="isCollapse">
-        <el-menu-item index="1">
+        <el-menu-item index="1" @click="goRoute('/echart/hot')">
           <i class="el-icon-menu"></i>
           <template #title>导航一</template>
         </el-menu-item>
-        <el-menu-item index="2">
+        <el-menu-item index="2" @click="goRoute('/echart/map')">
           <i class="el-icon-document"></i>
           <template #title>导航二</template>
         </el-menu-item>
-        <el-menu-item index="3">
+        <el-menu-item index="3" @click="goRoute('/echart/hot')">
           <i class="el-icon-setting"></i>
           <template #title>导航三</template>
         </el-menu-item>
@@ -46,16 +46,22 @@ export default defineComponent({
     const collapseWidth = computed(() => {
       return isCollapse.value ? '64px' : '200px'
     })
-
+    // 全局对象
     const Store = inject('Store')
+    // 返回主菜单
     const goBack = () => {
       Store.router.push('/home')
+    }
+    // 前往指定的路由界面
+    const goRoute = route => {
+      Store.router.replace(route)
     }
 
     return {
       goBack,
       isCollapse,
-      collapseWidth
+      collapseWidth,
+      goRoute
     }
   }
 })

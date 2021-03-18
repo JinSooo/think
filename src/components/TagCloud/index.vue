@@ -39,9 +39,11 @@ export default defineComponent({
 
 <style lang="stylus" scoped>
 .cloud
+  box-sizing border-box
   list-style none
   width 100%
   height 100%
+  padding 0 100px
 
   display: flex;
   flex-wrap: wrap;

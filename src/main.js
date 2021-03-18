@@ -14,7 +14,20 @@ import '@/assets/css/reset.css'
 // global css
 import '@/assets/stylus/global.styl'
 
-createApp(App)
+// echart
+import * as echarts from 'echarts'
+// china.js
+import china from '@/mock/china.json'
+import jiangsu from '@/mock/city/jiangsu.json'
+// 应用地图
+echarts.registerMap('china', china)
+echarts.registerMap('jiangsu', jiangsu)
+
+const app = createApp(App)
+
+app.config.globalProperties.$echarts = echarts
+
+app
   .use(router)
   .use(ElementPlus, { locale })
   .mount('#app')

@@ -147,7 +147,7 @@
       <el-card style="height: 100%">
         <template #header>
           <div class="card-header">
-            <div class="header_content">关键字</div>
+            <div class="header_content">标签云</div>
           </div>
         </template>
         <TagCloud />
@@ -157,25 +157,17 @@
 </template>
 
 <script>
-import { computed, defineComponent, nextTick, onMounted, ref } from 'vue'
+import { computed, defineComponent, inject, nextTick, onMounted, ref } from 'vue'
 import TagCloud from '@/components/TagCloud'
 import { getHot } from '@/utils/api'
-import * as echarts from 'echarts/core'
-import {
-  TitleComponent,
-  ToolboxComponent,
-  TooltipComponent,
-  GridComponent,
-  LegendComponent
-} from 'echarts/components'
-import { LineChart, BarChart } from 'echarts/charts'
-import { CanvasRenderer } from 'echarts/renderers'
 export default defineComponent({
   name: 'Hot',
   components: {
     TagCloud
   },
   setup() {
+    // 获取全局对象
+    const Store = inject('Store')
     // 热搜榜数据
     const hotList = ref()
     // 总热度
@@ -193,7 +185,6 @@ export default defineComponent({
     /* **************************************************************************************** */
     // 一列显示个数
     const colSpan = computed(() => {
-      console.log(window.innerWidth)
       if (window.innerWidth > 1180) return 6
       return 12
     })
@@ -216,18 +207,6 @@ export default defineComponent({
     }
     // 初始化Echart
     const _initEchart = () => {
-      // 引用组件
-      echarts.use([
-        TitleComponent,
-        ToolboxComponent,
-        TooltipComponent,
-        GridComponent,
-        LegendComponent,
-        LineChart,
-        BarChart,
-        CanvasRenderer
-      ])
-
       // 初始化chart
       _initChart1()
       _initChart2()
@@ -236,7 +215,7 @@ export default defineComponent({
     // 初始化chart1
     const _initChart1 = () => {
       const data = _randomHotValue()
-      var myChart = echarts.init(chart1Ref.value)
+      var myChart = Store.ctx.$echarts.init(chart1Ref.value)
       var option = {
         xAxis: [
           {
@@ -287,7 +266,7 @@ export default defineComponent({
     // 初始化chart2
     const _initChart2 = () => {
       const data = _randomHotValue()
-      var myChart = echarts.init(chart2Ref.value)
+      var myChart = Store.ctx.$echarts.init(chart2Ref.value)
       var option = {
         tooltip: {
           trigger: 'axis',
@@ -338,7 +317,7 @@ export default defineComponent({
     // 初始化chart3
     const _initChart3 = () => {
       const data = _randomHotValue()
-      var myChart = echarts.init(chart3Ref.value)
+      var myChart = Store.ctx.$echarts.init(chart3Ref.value)
       var option = {
         tooltip: {
           trigger: 'axis',

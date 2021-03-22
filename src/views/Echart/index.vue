@@ -14,14 +14,14 @@
           <i class="el-icon-document"></i>
           <template #title>导航二</template>
         </el-menu-item>
-        <el-menu-item index="3" @click="goRoute('/echart/hot')">
+        <el-menu-item index="3" @click="goRoute('/echart/user')">
           <i class="el-icon-setting"></i>
           <template #title>导航三</template>
         </el-menu-item>
       </el-menu>
     </el-aside>
     <el-container>
-      <el-header :style="{ marginLeft: collapseWidth }">
+      <el-header :style="{ paddingLeft: collapseWidth }">
         <span class="back" @click="isCollapse = !isCollapse">
           <i v-if="!isCollapse" class="el-icon-s-fold"></i>
           <i v-else class="el-icon-s-unfold"></i>
@@ -78,7 +78,7 @@ export default defineComponent({
   z-index 99
   height 100%
   background #fff
-  opacity .8
+  opacity .7
   header
     height 60px
     font-size 30px

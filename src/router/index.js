@@ -5,6 +5,7 @@ const Home = () => import('@/views/Home')
 const Echart = () => import('@/views/Echart')
 const Hot = () => import('@/views/Echart/Hot')
 const Map = () => import('@/views/Echart/Map')
+const User = () => import('@/views/Echart/User')
 
 const routes = [
   {
@@ -34,6 +35,11 @@ const routes = [
         path: '/echart/map',
         name: 'Map',
         component: Map
+      },
+      {
+        path: '/echart/user',
+        name: 'User',
+        component: User
       }
     ]
   }

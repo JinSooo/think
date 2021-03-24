@@ -5,16 +5,16 @@
       <header>
         Echart
       </header>
-      <el-menu default-active="1" :collapse="isCollapse">
-        <el-menu-item index="1" @click="goRoute('/echart/hot')">
+      <el-menu :default-active="defaultActive" :collapse="isCollapse" router @select="handleSelect">
+        <el-menu-item index="/echart/hot">
           <i class="el-icon-menu"></i>
           <template #title>导航一</template>
         </el-menu-item>
-        <el-menu-item index="2" @click="goRoute('/echart/map')">
+        <el-menu-item index="/echart/map">
           <i class="el-icon-document"></i>
           <template #title>导航二</template>
         </el-menu-item>
-        <el-menu-item index="3" @click="goRoute('/echart/user')">
+        <el-menu-item index="/echart/user">
           <i class="el-icon-setting"></i>
           <template #title>导航三</template>
         </el-menu-item>
@@ -29,7 +29,12 @@
         <span class="back" @click="goBack"><i class="el-icon-switch-button"></i></span>
       </el-header>
       <el-main :style="{ marginLeft: collapseWidth }">
-        <router-view />
+        <!-- 路由缓存 -->
+        <router-view v-slot="{ Component }">
+          <keep-alive>
+            <component :is="Component" />
+          </keep-alive>
+        </router-view>
       </el-main>
     </el-container>
   </el-container>
@@ -37,6 +42,7 @@
 
 <script>
 import { computed, defineComponent, inject, ref } from 'vue'
+import { getDefaultIndex, setDefaultIndex } from '@/utils/localStorage'
 export default defineComponent({
   name: 'Echart',
   setup() {
@@ -52,16 +58,20 @@ export default defineComponent({
     const goBack = () => {
       Store.router.push('/home')
     }
-    // 前往指定的路由界面
-    const goRoute = route => {
-      Store.router.replace(route)
+    // 默认激活的菜单
+    const defaultActive = getDefaultIndex() ? getDefaultIndex() : '/echart/hot'
+
+    // 监听defaultActive的变化
+    const handleSelect = index => {
+      setDefaultIndex(index)
     }
 
     return {
       goBack,
       isCollapse,
       collapseWidth,
-      goRoute
+      defaultActive,
+      handleSelect
     }
   }
 })
@@ -70,15 +80,13 @@ export default defineComponent({
 <style lang="stylus" scoped>
 .el-menu
   border 0
-  // box-shadow 2px 0 12px 0 rgba(0, 0, 0, 0.1)
 .el-aside
   position absolute
   left 0
   top 0
   z-index 99
   height 100%
-  background #fff
-  opacity .7
+  background rgba(255,255,255,.5)
   header
     height 60px
     font-size 30px
@@ -93,6 +101,7 @@ export default defineComponent({
   display flex
   justify-content space-between
   transition .3s
+  margin-left 10px
   span
     cursor pointer
     &:hover
@@ -101,4 +110,5 @@ export default defineComponent({
   background #f9f9f9
   box-sizing border-box
   transition .3s
+  overflow inherit
 </style>

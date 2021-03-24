@@ -236,9 +236,7 @@ export default defineComponent({
               color: '#6FD6F0'
             },
             itemStyle: {
-              normal: {
-                color: '#6FD6F0'
-              }
+              color: '#6FD6F0'
             },
             stack: 'a',
             // 数据
@@ -260,9 +258,7 @@ export default defineComponent({
               color: '#73BEE5'
             },
             itemStyle: {
-              normal: {
-                color: '#73BEE5'
-              }
+              color: '#73BEE5'
             },
             stack: 'a',
             // 数据

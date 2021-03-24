@@ -11,8 +11,10 @@
           </router-link>
         </li>
         <li class="project_item">
-          <img src="../../assets/img/icon/外星人.svg" alt="" width="80" height="80" />
-          <p>内容</p>
+          <router-link to="/location">
+            <img src="../../assets/img/icon/外星人.svg" alt="" width="80" height="80" />
+            <p>Location</p>
+          </router-link>
         </li>
         <li class="project_item">
           <img src="../../assets/img/icon/卫星接收器.svg" alt="" width="80" height="80" />
@@ -90,6 +92,7 @@ export default defineComponent({
         color #eee
         font-size 16px
         padding-top 10px
+        letter-spacing 1px
 #bgCanv
   position absolute
   left 0

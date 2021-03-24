@@ -7,6 +7,8 @@ const Hot = () => import('@/views/Echart/Hot')
 const Map = () => import('@/views/Echart/Map')
 const User = () => import('@/views/Echart/User')
 
+const Location = () => import('@/views/Location')
+
 const routes = [
   {
     path: '/',
@@ -42,6 +44,11 @@ const routes = [
         component: User
       }
     ]
+  },
+  {
+    path: '/location',
+    name: 'Location',
+    component: Location
   }
 ]
 

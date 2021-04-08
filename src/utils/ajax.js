@@ -17,6 +17,11 @@ axios.interceptors.response.use(
   err => Promise.reject(err)
 )
 
+/**
+ * get请求
+ * @param {string} url     请求api
+ * @param {object | null} params  请求参数
+ */
 export const get = (url, params = {}) => {
   return new Promise((resolve, reject) => {
     axios
@@ -26,6 +31,11 @@ export const get = (url, params = {}) => {
   })
 }
 
+/**
+ * post请求
+ * @param {string} url  请求api
+ * @param {object} data 请求数据
+ */
 export const post = (url, data) => {
   return new Promise((resolve, reject) => {
     axios

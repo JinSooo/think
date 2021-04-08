@@ -289,10 +289,6 @@ export default defineComponent({
       color rgba(0,0,0,.45)
       display flex
       justify-content space-between
-.divider
-  margin 24px 0
-  height 1px
-  background-image linear-gradient(to right ,white, rgba(0,0,0,.45),rgba(0,0,0,.45),rgba(0,0,0,.45), white)
 .el-tabs
   font-size 16px
   & >>> .el-tabs__item

@@ -3,9 +3,11 @@ import { useRoute, useRouter } from 'vue-router'
 
 // 全局变量
 export const store = {
-  route: null,
-  router: null,
-  ctx: null
+  route: null, // 路由实例
+  router: null, // 路由器实例
+  ctx: null, // vue实例
+  ak: 'Yp3G9k9xsIsu1y5xOQjAL6ydsoAAgYnB', // 百度地图验证AK
+  BMapGL: null // 百度地图实例
 }
 
 export const mixins = {

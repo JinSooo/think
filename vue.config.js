@@ -1,12 +1,12 @@
 module.exports = {
   // 关闭eslint检测
   lintOnSave: false,
-  devServer: {
-    overlay: {
-      warning: false,
-      errors: false
-    }
-  },
+  // devServer: {
+  //   overlay: {
+  //     warning: false,
+  //     errors: false
+  //   }
+  // },
   publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
   chainWebpack: config => {
     // 生产模式
@@ -47,6 +47,18 @@ module.exports = {
         pathRewrite: {
           // ^ 代表target地址 后面的api代码请求的api
           '^/hotList': ''
+        }
+      },
+      // 百度地图API请求
+      '/bmap': {
+        // 跳转目标请求地址
+        target: 'http://api.map.baidu.com',
+        // 允许跨域
+        changeOrigin: true,
+        // 这里是追加链接,比如真是接口里包含了 /api,就需要这样配置.
+        pathRewrite: {
+          // ^ 代表target地址 后面的api代码请求的api
+          '^/bmap': ''
         }
       }
     }

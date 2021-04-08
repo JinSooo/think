@@ -87,6 +87,7 @@ ol {
 a {
   text-decoration: none;
   color: #666;
+  cursor: pointer;
 }
 
 /* 重置表单元素 */
@@ -125,19 +126,13 @@ html {
   overflow-y: scroll;
 }
 
+a:hover {
+  color: #409eff;
+}
 /* a:link:hover {
   color: rgb(79, 76, 212) !important;
   text-decoration: underline;
 } */
-
-/* 清除浮动 */
-.clearfix::after {
-  display: block;
-  height: 0;
-  content: '';
-  clear: both;
-  visibility: hidden;
-}
 
 /* 右边阴影 */
 .box-shadow_right {

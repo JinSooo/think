@@ -13,7 +13,9 @@ import '@/assets/css/reset.css'
 
 // global css
 import '@/assets/stylus/global.styl'
-
+// nprogress
+import nprogress from 'nprogress'
+import 'nprogress/nprogress.css'
 // echart
 import * as echarts from 'echarts'
 // china.js
@@ -24,8 +26,9 @@ echarts.registerMap('china', china)
 echarts.registerMap('jiangsu', jiangsu)
 
 const app = createApp(App)
-
+// 全局对象
 app.config.globalProperties.$echarts = echarts
+app.config.globalProperties.$nprogress = nprogress
 
 app
   .use(router)

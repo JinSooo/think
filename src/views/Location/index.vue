@@ -150,7 +150,7 @@ export default defineComponent({
      * methods
      **************************************************/
     // 地图控件初始化
-    const _initBMapControl = (map, point) => {
+    const _initBMapControl = map => {
       const scaleCtrl = new BMapGL.ScaleControl() // 添加比例尺控件
       map.addControl(scaleCtrl)
       const zoomCtrl = new BMapGL.ZoomControl() // 添加比例尺控件
@@ -173,41 +173,25 @@ export default defineComponent({
       })
       // 将控件添加到地图上
       map.addControl(locationControl)
-      // 点标记(显示当前位置)
-      const marker = new BMapGL.Marker(point, {
-        // enableDragging: true // 可拖拽,
-        icon: new BMapGL.Icon(car, new BMapGL.Size(35, 35)) // 自定义标记图标
-      })
-      marker.disableMassClear() // 禁止覆盖物在map.clearOverlays方法中被清除
-      map.addOverlay(marker)
-      // 信息窗口
-      const infoWindow = new BMapGL.InfoWindow('地址：当前位置', {
-        width: 200,
-        height: 100,
-        title: '位置'
-      })
-      marker.addEventListener('click', function() {
-        map.openInfoWindow(infoWindow, point) // 开启信息窗口
-      })
 
       // 地图显示后定位一次
       // locationControl.startLocation()
     }
     // 初始化Map
     const _initBMap = () => {
+      // 创建Map实例
       const map = new BMapGL.Map('bMap', {
         minZoom: 5, // 最小级别
         maxZoom: 20 // 最大级别
-      }) // 创建Map实例
-      const point = new BMapGL.Point(location.value.longitude, location.value.latitude) // 创建点坐标
-      map.centerAndZoom(point, 18) // 初始化地图,设置中心点坐标和地图级别
+      })
+      map.centerAndZoom('苏州市', 18) // 初始化地图,设置中心点坐标和地图级别
       map.setTilt(45) // 设置地图倾斜角度
       map.enableScrollWheelZoom(true) // 启用滚轮放大缩小
       // 地图加载完成事件
       map.addEventListener('tilesloaded', function() {
         // 添加路况图层
         // map.setTrafficOn()
-        _initBMapControl(map, point)
+        _initBMapControl(map)
       })
       return map
     }
@@ -217,6 +201,26 @@ export default defineComponent({
         var geolocation = new BMapGL.Geolocation()
         geolocation.getCurrentPosition(
           function(position) {
+            // 标记当前位置
+            const point = new BMapGL.Point(position.longitude, position.latitude)
+            // 点标记(显示当前位置)
+            const marker = new BMapGL.Marker(point, {
+              // enableDragging: true // 可拖拽,
+              icon: new BMapGL.Icon(car, new BMapGL.Size(35, 35)) // 自定义标记图标
+            })
+            marker.disableMassClear() // 禁止覆盖物在map.clearOverlays方法中被清除
+            map.addOverlay(marker)
+            // 信息窗口
+            const infoWindow = new BMapGL.InfoWindow('地址：当前位置', {
+              width: 200,
+              height: 100,
+              title: '位置'
+            })
+            marker.addEventListener('click', function() {
+              map.openInfoWindow(infoWindow, point) // 开启信息窗口
+            })
+            map.centerAndZoom(point, 18) // 初始化地图,设置中心点坐标和地图级别
+            map.setTilt(45) // 设置地图倾斜角度
             console.log(this.getStatus())
             resolve(position)
           },
@@ -359,15 +363,19 @@ export default defineComponent({
       BMapGL = await loadBMap()
       // 把实例存入全局变量中
       Store.BMapGL = BMapGL
-      // 获取经纬度
-      location.value = await _getLocation()
       // 初始化地图
       map = await _initBMap()
       // 进度条结束
       // loading.close()
       Store.ctx.$nprogress.done()
+      // 获取当前位置
+      _getLocation().then(res => {
+        location.value = res
+      })
       // 获取ip
-      ip.value = await getIp()
+      getIp().then(res => {
+        ip.value = res
+      })
     })
 
     return {

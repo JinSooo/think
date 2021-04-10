@@ -6,12 +6,17 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <title>Think<%= htmlWebpackPlugin.options.isProd ? '' : ' - dev' %></title>
+    <% if(htmlWebpackPlugin.options.isProd) {%>
+    <script src="https://unpkg.com/browse/echarts@5.0.2/dist/echarts.min.js"></script>
+    <script src="https://unpkg.com/vue@3.0.0/dist/vue.global.prod.js"></script>
+    <script src="https://unpkg.com/vue-router@4.0.0/dist/vue-router.global.prod.js"></script>
+    <% } %>
   </head>
   <body>
     <noscript>
       <strong
-        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without
-        JavaScript enabled. Please enable it to continue.</strong
+        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please
+        enable it to continue.</strong
       >
     </noscript>
     <div id="app"></div>

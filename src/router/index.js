@@ -1,13 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-const Home = () => import('@/views/Home')
+const Home = () => import(/* webpackChunkName: "home" */ '@/views/Home')
 
-const Echart = () => import('@/views/Echart')
-const Hot = () => import('@/views/Echart/Hot')
-const Map = () => import('@/views/Echart/Map')
-const User = () => import('@/views/Echart/User')
+const Echart = () => import(/* webpackChunkName: "chart" */ '@/views/Echart')
+const Hot = () => import(/* webpackChunkName: "chart" */ '@/views/Echart/Hot')
+const Map = () => import(/* webpackChunkName: "chart" */ '@/views/Echart/Map')
+const User = () => import(/* webpackChunkName: "chart" */ '@/views/Echart/User')
 
-const Location = () => import('@/views/Location')
+const Location = () => import(/* webpackChunkName: "location" */ '@/views/Location')
 
 const routes = [
   {

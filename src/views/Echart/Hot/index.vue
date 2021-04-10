@@ -37,9 +37,7 @@
           <!-- 折线图 -->
           <div ref="chart1Ref" class="chartSmall"></div>
           <el-divider></el-divider>
-          <div class="info" v-if="hotList">
-            同比增加 {{ hotList[0].hot_value - hotList[1].hot_value }}
-          </div>
+          <div class="info" v-if="hotList">同比增加 {{ hotList[0].hot_value - hotList[1].hot_value }}</div>
         </div>
       </el-card>
     </el-col>
@@ -56,9 +54,7 @@
           <!-- 柱状图 -->
           <div ref="chart2Ref" class="chartSmall"></div>
           <el-divider></el-divider>
-          <div class="info" v-if="hotList">
-            同比增加 {{ hotList[0].hot_value - hotList[1].hot_value }}
-          </div>
+          <div class="info" v-if="hotList">同比增加 {{ hotList[0].hot_value - hotList[1].hot_value }}</div>
         </div>
       </el-card>
     </el-col>
@@ -80,9 +76,7 @@
             :percentage="Math.round(total / hotList[0].hot_value)"
           ></el-progress>
           <el-divider></el-divider>
-          <div class="info" v-if="hotList">
-            同比增加 {{ hotList[0].hot_value - hotList[1].hot_value }}
-          </div>
+          <div class="info" v-if="hotList">同比增加 {{ hotList[0].hot_value - hotList[1].hot_value }}</div>
         </div>
       </el-card>
     </el-col>

@@ -14,22 +14,28 @@ module.exports = {
       config
         .entry('app')
         .clear()
-        .add('./src/main.js')
+        .add('./src/main_prod.js')
+
+      // config.set('externals', {
+      //   vue: 'Vue',
+      //   'vue-router': 'VueRouter',
+      //   echarts: 'echarts'
+      // })
 
       config.plugin('html').tap(args => {
-        args[0].isProd = true
+        args[0].isProd = false
         return args
       })
     })
     // 开发模式
-    config.when(process.env.NODE_ENV === 'production', config => {
+    config.when(process.env.NODE_ENV === 'development', config => {
       config
         .entry('app')
         .clear()
         .add('./src/main.js')
 
       config.plugin('html').tap(args => {
-        args[0].isProd = false
+        args[0].isProd = true
         return args
       })
     })

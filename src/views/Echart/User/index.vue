@@ -6,11 +6,7 @@
         <div class="basic">
           <!-- 头像 -->
           <div class="avatar">
-            <el-image
-              style="width: 100px; height: 100px"
-              :src="avatar"
-              :preview-src-list="[avatar]"
-            ></el-image>
+            <el-image style="width: 100px; height: 100px" :src="avatar" :preview-src-list="[avatar]"></el-image>
           </div>
           <!-- 姓名 -->
           <h2>Jason</h2>
@@ -42,8 +38,7 @@
           <div class="item">
             <div>简介</div>
             <div>
-              Organize everything in your life in one place. Organize everything in your life in one
-              place.
+              Organize everything in your life in one place. Organize everything in your life in one place.
             </div>
           </div>
         </div>
